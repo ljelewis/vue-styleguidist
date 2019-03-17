@@ -39,29 +39,31 @@ module.exports = api => {
 		},
 
 		args => {
-			const server = getStyleguidist(args, api).binutils.server(args.open).app
+			getStyleguidist(args, api).then(function(styleguidist) {
+				const server = styleguidist.binutils.server(args.open).app
 
-			// in order to avoid ghosted threads at the end of tests
-			;['SIGINT', 'SIGTERM'].forEach(signal => {
-				process.on(signal, () => {
-					server.close(() => {
-						process.exit(0)
-					})
-				})
-			})
-
-			// in tests, killing the process with SIGTERM causes execa to
-			// throw
-			if (process.env.VUE_CLI_TEST) {
-				process.stdin.on('data', data => {
-					if (data.toString() === 'close') {
-						console.log('got close signal!')
+				// in order to avoid ghosted threads at the end of tests
+				;['SIGINT', 'SIGTERM'].forEach(signal => {
+					process.on(signal, () => {
 						server.close(() => {
 							process.exit(0)
 						})
-					}
+					})
 				})
-			}
+
+				// in tests, killing the process with SIGTERM causes execa to
+				// throw
+				if (process.env.VUE_CLI_TEST) {
+					process.stdin.on('data', data => {
+						if (data.toString() === 'close') {
+							console.log('got close signal!')
+							server.close(() => {
+								process.exit(0)
+							})
+						}
+					})
+				}
+			})
 		}
 	)
 }

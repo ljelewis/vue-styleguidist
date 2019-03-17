@@ -7,6 +7,8 @@ const StyleguidistError = require('react-styleguidist/scripts/utils/error')
 const sanitizeConfig = require('react-styleguidist/scripts/utils/sanitizeConfig')
 const schema = require('./schemas/config')
 
+const mergeRemoteConfig = require('./remote-config')
+
 const CONFIG_FILENAME = 'styleguide.config.js'
 
 /**
@@ -16,7 +18,7 @@ const CONFIG_FILENAME = 'styleguide.config.js'
  * @param {function} [update] Change config object before running validation on it.
  * @returns {object}
  */
-function getConfig(config, update) {
+async function getConfig(config, update) {
 	let configFilepath
 	if (isString(config)) {
 		// Load config from a given file
@@ -34,6 +36,8 @@ function getConfig(config, update) {
 	if (configFilepath) {
 		config = require(configFilepath)
 	}
+
+	config = await mergeRemoteConfig(config)
 
 	if (update) {
 		config = update(config)

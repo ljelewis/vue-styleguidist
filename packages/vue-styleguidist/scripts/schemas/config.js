@@ -150,6 +150,9 @@ module.exports = {
 	propsParser: {
 		type: 'function'
 	},
+	remote: {
+		type: 'object'
+	},
 	require: {
 		type: 'array',
 		default: [],

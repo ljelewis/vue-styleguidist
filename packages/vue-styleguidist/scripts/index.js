@@ -15,8 +15,8 @@ const binutils = require('./binutils')
  * @param {function} [updateConfig] update config post resolution
  * @returns {object} API.
  */
-module.exports = function(config, updateConfig) {
-	config = getConfig(config, config => {
+module.exports = async function(config, updateConfig) {
+	config = await getConfig(config, config => {
 		setupLogger(config.logger, config.verbose, {})
 		if (typeof updateConfig === 'function') {
 			updateConfig(config)
