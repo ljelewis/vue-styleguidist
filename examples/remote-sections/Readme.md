@@ -4,6 +4,7 @@ How to start locally:
 
 ```
 git clone https://github.com/lukenofurther/vue-styleguidist.git
+git checkout feature/remote-config
 cd vue-styleguidist
 yarn
 cd packages/vue-styleguidist
