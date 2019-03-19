@@ -1,0 +1,40 @@
+{
+  "name": "vue-styleguidist-example-basic",
+  "description": "Vue styleguidist basic example",
+  "version": "3.9.3",
+  "private": true,
+  "homepage": "https://github.com/vue-styleguidist/vue-styleguidist",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/styleguidist/vue-styleguidist.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=4"
+  },
+  "dependencies": {
+    "@znck/prop-types": "^0.6.1",
+    "dog-names": "^1.0.2",
+    "vue-types": "^1.5.0"
+  },
+  "scripts": {
+    "styleguide": "vue-cli-service styleguidist"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "@contentful/rich-text-html-renderer": "^13.1.0",
+    "@vue/cli-service": "^3.5.1",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^0.28.7",
+    "lodash": "^4.17.11",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "vue-cli-plugin-styleguidist": "file:../../packages/vue-cli-plugin-styleguidist",
+    "vue-loader": "^15.2.4",
+    "webpack": "^4.10.0"
+  }
+}
