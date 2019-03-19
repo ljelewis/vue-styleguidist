@@ -3,6 +3,7 @@ const _ = require('lodash')
 const fs = require('fs')
 const axios = require('axios')
 const Turndown = require('turndown')
+const ES6Promise = require('es6-promise').Promise
 
 const StyleguidistError = require('react-styleguidist/scripts/utils/error')
 
@@ -102,7 +103,7 @@ module.exports = function(srcConfig) {
 	let uri = null
 
 	if (!srcConfig.remote) {
-		return Promise.resolve(srcConfig)
+		return ES6Promise.resolve(srcConfig)
 	}
 
 	uri = makeRemoteUriFromConfig(config)
